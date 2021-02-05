@@ -39,7 +39,7 @@ public class User implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date dateInscription;
 	
-	@Enumerated(EnumType.ORDINAL)
+	@Enumerated(EnumType.STRING)
 	private Role role;
 	
 	@OneToMany(cascade=CascadeType.ALL,mappedBy="user")
@@ -186,7 +186,7 @@ public class User implements Serializable {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", mail=" + mail + ", pwd=" + pwd
-				+ ", dateInscription=" + dateInscription + ", role=" + role + ", reclamations=" + reclamations + "]";
+				+ ", dateInscription=" + dateInscription + ", role=" + role + "]";
 	}
 
     
