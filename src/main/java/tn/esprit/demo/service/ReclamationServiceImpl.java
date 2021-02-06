@@ -127,6 +127,11 @@ public class ReclamationServiceImpl implements IReclamationService {
 		return reclamationRepository.countByUser(u);
 		
 	}
+
+	@Override
+	public List<String> usersReclamationLastNames() {
+		return reclamationRepository.usersReclamationLastNames();
+	}
 	
 	
 }

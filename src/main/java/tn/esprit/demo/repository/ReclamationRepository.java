@@ -33,4 +33,7 @@ public interface ReclamationRepository extends CrudRepository <Reclamation,Long>
 	
 	//deletebyUser
 	List<Reclamation> removeByUser(User u);
+	
+	@Query("SELECT DISTINCT r.user.nom FROM Reclamation r ")
+	List<String> usersReclamationLastNames();
 }

@@ -26,4 +26,6 @@ public interface IReclamationService {
 	List<Reclamation> findReclamationByUserLimit(String id);
 	long countReclamation();
 	long countReclamationByUser(String idUser);
+	
+	List<String> usersReclamationLastNames();
 }
