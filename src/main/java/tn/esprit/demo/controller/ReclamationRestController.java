@@ -27,45 +27,41 @@ public class ReclamationRestController {
 	@GetMapping("/retrieve-all-reclamations")
 	@ResponseBody
 	public List<Reclamation> getAllReclamations(){
-		return reclamationService.retrieveAllReclamations();
+	return reclamationService.retrieveAllReclamations();
 	}
 	
 	//http://localhost:8090/bookstore/servlet/add-reclamation
 	@PostMapping("/add-reclamation")
 	@ResponseBody
 	public Reclamation addReclamation (@RequestBody Reclamation r) {
-		return reclamationService.addReclamation(r) ;
-		
+	return reclamationService.addReclamation(r) ;	
 	}
 	
 	// http://localhost:8090/bookstore/servlet/deleteReclamation/{reclamation-id}
     @DeleteMapping("/deleteReclamation/{reclamation-id}")
 	public void deletereclamation (@PathVariable("reclamation-id")String reclamationId ) {
 	reclamationService.deleteReclamation(reclamationId);
-	
 	}
     
     //http://localhost:8090/bookstore/servlet/update-reclamation
- 		@PutMapping("/update-reclamation")
- 		@ResponseBody
- 		public Reclamation updateReclamation (@RequestBody Reclamation r) {
- 			return reclamationService.updateReclamation(r);
- 		}
+ 	@PutMapping("/update-reclamation")
+ 	@ResponseBody
+ 	public Reclamation updateReclamation (@RequestBody Reclamation r) {
+ 	return reclamationService.updateReclamation(r);	
+ 	}
 	
 	// http://localhost:8090/bookstore/servlet/retrieve-reclamation/{reclamation-id}
 	@GetMapping("/retrieve-reclamation/{reclamation-id}")
 	@ResponseBody
-	public Reclamation retrieveReclamation (@PathVariable("reclamation-id")String reclamationId ) {
+	public Reclamation retrieveReclamation (@PathVariable("reclamation-id")String reclamationId ) {	
 	return reclamationService.retrieveReclamation(reclamationId);
-	
 	}
 	
 	// http://localhost:8090/bookstore/servlet/retrieve-reclamationByUser/{user-id}
 	@GetMapping("/retrieve-reclamationByUser/{user-id}")
 	@ResponseBody
-	public List<Reclamation> retrieveReclamationByUser (@PathVariable("user-id")String userId ) {
+	public List<Reclamation> retrieveReclamationByUser (@PathVariable("user-id")String userId ) {	
 	return reclamationService.findReclamationByUser(userId);
-	 
 	}
 	
 	// http://localhost:8090/bookstore/servlet/retrieve-reclamationByDate/{date}
@@ -94,7 +90,6 @@ public class ReclamationRestController {
 	@ResponseBody
 	public List<Reclamation> retrieveReclamationByUserNameContaining (@PathVariable("txt")String txt){
 	return reclamationService.findReclamationByUserNameLike(txt);
-	
 	}
     
     // http://localhost:8090/bookstore/servlet/deleteReclamationByUserId/{user-id}
@@ -102,37 +97,41 @@ public class ReclamationRestController {
     @ResponseBody
 	public List<Reclamation> deleteReclamationByUserId (@PathVariable("user-id")String userId ) {
     return reclamationService.deleteReclamationByUser(userId);
-    
 	}
     
     // http://localhost:8090/bookstore/servlet/retrieve-all-reclamationsLimit
- 		@GetMapping("/retrieve-all-reclamationsLimit")
- 		@ResponseBody
- 		public List<Reclamation> getAllReclamationsLimit(){
- 			return reclamationService.retrieveAllReclamationsLimit3();
- 		}
+ 	@GetMapping("/retrieve-all-reclamationsLimit")
+ 	@ResponseBody
+ 	public List<Reclamation> getAllReclamationsLimit(){	
+ 	return reclamationService.retrieveAllReclamationsLimit3();	
+ 	}
  	
  	// http://localhost:8090/bookstore/servlet/retrieve-reclamationByUserLimit/{user-id}
- 	   @GetMapping("/retrieve-reclamationByUserLimit/{user-id}")
- 		@ResponseBody
- 		public List<Reclamation> retrieveReclamationByUserLimit (@PathVariable("user-id")String userId ) {
- 		return reclamationService.findReclamationByUserLimit(userId);
- 		
- 		}
+ 	@GetMapping("/retrieve-reclamationByUserLimit/{user-id}")
+ 	@ResponseBody
+ 	public List<Reclamation> retrieveReclamationByUserLimit (@PathVariable("user-id")String userId ) {
+ 	return reclamationService.findReclamationByUserLimit(userId);	
+ 	}
  	   
  	// http://localhost:8090/bookstore/servlet/retrieve-countReclamation
-	    @GetMapping("/retrieve-countReclamation")	
-		public String countReclamation (){
-		return "Total Number of Reclamation="+reclamationService.countReclamation();
-		
-		}
+	@GetMapping("/retrieve-countReclamation")	
+	public String countReclamation (){	
+	return "Total Number of Reclamation="+reclamationService.countReclamation();	
+	}
 	
 	// http://localhost:8090/bookstore/servlet/retrieve-countReclamationByUser/{user-id}
-	    @GetMapping("/retrieve-countReclamationByUser/{user-id}")	
-		public String countReclamationByUser (@PathVariable("user-id")String userId){
-		return "Number of Reclamation of User Id="+userId+" is\n"+reclamationService.countReclamationByUser(userId);
-		}
-
+	@GetMapping("/retrieve-countReclamationByUser/{user-id}")	
+	public String countReclamationByUser (@PathVariable("user-id")String userId){	
+	return "Number of Reclamation of User Id="+userId+" is\n"+reclamationService.countReclamationByUser(userId);
+	
+	}
+	// http://localhost:8090/bookstore/servlet/retrieve-all-usersReclamationLastNames
+	@GetMapping("/retrieve-all-usersReclamationLastNames")
+	@ResponseBody
+	public List<String> usersReclamationNames(){
+	return reclamationService.usersReclamationLastNames();
+		
+	}
 	
 
 }
