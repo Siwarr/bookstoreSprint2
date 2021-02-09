@@ -28,7 +28,7 @@ public class Reclamation implements Serializable {
 	
 	@Column(name="Reclamation_DATE")
 	@Temporal(TemporalType.DATE)
-	private Date ReclamationDate;
+	private Date date;
 	
 	@ManyToOne
 	@JoinColumn(name="FK_USER_ID")
@@ -41,11 +41,11 @@ public class Reclamation implements Serializable {
 	
 	
 
-	public Reclamation(String titre, String description, Date reclamationDate) {
+	public Reclamation(String titre, String description, Date Reclamationdate) {
 		super();
 		this.titre = titre;
 		this.description = description;
-		ReclamationDate = reclamationDate;
+		this.date = Reclamationdate;
 	}
 
 
@@ -55,7 +55,7 @@ public class Reclamation implements Serializable {
 		this.id = id;
 		this.titre = titre;
 		this.description = description;
-		this.ReclamationDate = ReclamationDate;
+		this.date = ReclamationDate;
 	}
 	
 	
@@ -65,7 +65,7 @@ public class Reclamation implements Serializable {
 		this.id = id;
 		this.titre = titre;
 		this.description = description;
-		this.ReclamationDate = ReclamationDate;
+		this.date = ReclamationDate;
 		this.user = user;
 	}
 
@@ -94,11 +94,11 @@ public class Reclamation implements Serializable {
 	}
 
 	public Date getReclamationDate() {
-		return ReclamationDate;
+		return date;
 	}
 
 	public void setDate(Date ReclamationDate) {
-		this.ReclamationDate = ReclamationDate;
+		this.date = ReclamationDate;
 	}
 	
 
@@ -112,8 +112,8 @@ public class Reclamation implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Reclamation [id=" + id + ", titre=" + titre + ", description=" + description + ", ReclamationDate=" + ReclamationDate
-				+ ", user=" + "]";
+		return "Reclamation [id=" + id + ", titre=" + titre + ", description=" + description + ", ReclamationDate=" + date
+				+ ", user=" +user+ "]";
 	}
 
 	

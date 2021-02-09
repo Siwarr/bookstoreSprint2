@@ -31,7 +31,7 @@ public class BookServiceImpl implements IBookService {
 	}
 	@Override
 	public Book getBookById(Long id){
-		return repository.findById(id).get();
+		return repository.findById(id).orElse(null);
 	}
 	@Override
 	public List<Book> getBookByName(String nom){

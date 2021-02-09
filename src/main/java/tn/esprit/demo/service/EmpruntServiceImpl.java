@@ -48,6 +48,7 @@ public class EmpruntServiceImpl {
 			return "succes emprunt";
 		}
 	}
+	
 	public int number(Long userId) {
 		User u=new User();
 		u=urepository.findById(userId).get();
@@ -64,25 +65,18 @@ public class EmpruntServiceImpl {
 		return count;
 	}
 	
-	
-	
-	
-	
-	
-	/*
-	public List<Emprunt> getByUserId(Long memberId){
-		return repository.findByMemberId(memberId);
+	public int delete(Long bookId) {
+		return this.erepository.delete(bookId);
 	}
-	
-	public void emprunter(Long memberId,Long bookId) {
-		if(repository.countEmpruntUser(memberId) != 0) {
-			System.out.println("Operation impossible. Vous avez deja un emprunt !");
-		}else if(!repository.getAvailabilityById(bookId)) {
-			System.out.println("Operation impossible. Ce livre nest pas disponnible pour le moment, veuillez revenir ulterieurement !");
-		}else {
-			repository.insertEmprunt(memberId, bookId);
-			repository.updateBookAvail(bookId);
-		}
+	public long countEmp() {
+		return erepository.count();
 	}
-	*/
+	public long nbEmpruntParUser(Long idUser) {
+		User u=urepository.findById(idUser).orElse(null);
+		return erepository.nbEmpUser(u);
+	}
+	public long nbBooks() {
+		return brepository.count();
+	}
+
 }
