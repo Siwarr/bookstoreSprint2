@@ -21,4 +21,12 @@ public interface EmpruntRepository extends JpaRepository<Emprunt,Integer>  {
 	
 	@Query("SELECT COUNT(e) FROM Emprunt e WHERE e.user = :user")
 	long nbEmpUser(@Param("user")User u);
+	
+	// update emprunt set issueTime =CURRENT_TIMESTAMP,
+	// renew_count=renew_count+1  where bookName= '"+ Namebook.getText() +"'";
+	@Transactional
+	@Modifying
+	@Query(value="UPDATE Emprunt e set e.issueTime = CURRENT_TIMESTAMP ,e.renew_count=e.renew_count+1   where e.book.id= :bookId")
+	int renewOperation(@Param("bookId") Long bookId);
+	
 }

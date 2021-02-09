@@ -65,6 +65,10 @@ public class EmpruntServiceImpl {
 		return count;
 	}
 	
+	public int renewEmprunt (Long bookId) {
+		return erepository.renewOperation(bookId);
+	}
+	
 	public int delete(Long bookId) {
 		return this.erepository.delete(bookId);
 	}

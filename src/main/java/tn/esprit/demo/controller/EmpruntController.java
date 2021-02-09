@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.demo.entities.Emprunt;
@@ -52,5 +53,9 @@ public class EmpruntController {
 	public String EmpruntBook() {
 		return "Le nombre de livres empruntés = "+service.countEmp()+
 				"\n Par rapport au nombre de livres disponibles = "+service.nbBooks();
+	}
+	@PutMapping("/renewEmprunt/{bookId}")
+	public int renewEmprunt(@PathVariable Long bookId) {
+		return service.renewEmprunt(bookId);
 	}
 }
