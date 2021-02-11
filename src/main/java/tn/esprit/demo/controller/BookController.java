@@ -1,65 +1,70 @@
-package tn.esprit.demo.controller;
+package com.esprit.demo.controller;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import tn.esprit.demo.entities.Book;
-import tn.esprit.demo.service.BookServiceImpl;
-import tn.esprit.demo.service.IBookService;
+import com.esprit.demo.entity.categorie;
+import com.esprit.demo.entity.ouvrage;
+import com.esprit.demo.service.CategorieService;
+import com.esprit.demo.service.CategorieServiceO;
 
 @RestController
-public class BookController {
-
+//@RequestMapping("/ouvrage")
+@CrossOrigin(origins = "*", allowedHeaders = "*", maxAge = 3600)public class BookController {
 	@Autowired
-	private IBookService service;
-	//http://localhost:8090/addBook
-	@PostMapping("/addBook")
-	public Book addBook(@RequestBody Book b) {
-		return service.saveBook(b);
+	private CategorieService service;
+	@Autowired
+	private CategorieServiceO serviceO;
+	
+	@GetMapping("/getcategoriebyouvrage")//api rest de type get
+	public List getcategoriebyOuvrage(){
+		return serviceO.getCategorieParNbrOuvrage();
 	}
-	/*
-	 *  "nom":"book8",
-    "auteur":"auteur",
-    "description":"desc",
-    "price":22,
-    "isAvail":1
-	 */
-	@PostMapping("/addBooks")
-	public List<Book> addBooks(@RequestBody List<Book> Books){
-		return service.saveBook(Books);
+	
+	@GetMapping("/getqtebyouvrage")//api rest de type get
+	public List getqtebyOuvrage(){
+		return serviceO.getQTEParNbrOuvrage();
 	}
-	//http://localhost:8090/books
-	@GetMapping("/books")
-	public List<Book> findAllBooks(){
-		return service.getBooks();
+	@GetMapping("/")//api rest de type get
+	public String helo(){
+		String ch="helo world";
+		return ch;
 	}
-	//http://localhost:8090/book/1
-	@GetMapping("/book/{id}")
-	public Book findBookById(@PathVariable("id") Long id) {
-		return service.getBookById(id);
+	
+	
+	@PostMapping("/addcategorie")
+	public categorie addcategorie(@RequestBody categorie c) {
+		return service.addcategorie(c);
 	}
-	//http://localhost:8090/books?nom=ouvrage
-	@GetMapping("/books/{nom}")
-	public List<Book> findBookByNom(@RequestParam(value="nom") String nom) {
-		return service.getBookByName(nom);
+	
+	@GetMapping("/retrieveAllCategorie")
+	public List<categorie> findAllcategorie(){
+		return service.retrieveAllCategorie();
 	}
-	//http://localhost:8090/update
-	@PutMapping("/update")
-	public Book updateBook(@RequestBody Book b) {
-		return service.updateBook(b);
+	@GetMapping("/retrievecategorie/{id}")
+	public categorie findCtegorieById(@PathVariable("id") long id) {
+		return service.retrievecategorie(id);
 	}
-	//http://localhost:8090/delete/3
-	@DeleteMapping("/delete/{id}")
-	public String deleteBook(@PathVariable("id") Long id) {
-		return service.deleteBook(id);
+	
+	@PutMapping("/updatecategorie")
+	public categorie updateCategorie(@RequestBody categorie c) {
+		return service.updatecategorie(c);
 	}
+
+	@DeleteMapping("/deletecategorie/{id}")
+	public String deleteCategorie(@PathVariable("id") long id) {
+		return service.deletecategorie(id);
+	}
+
 }
