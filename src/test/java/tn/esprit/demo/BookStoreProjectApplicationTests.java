@@ -12,8 +12,7 @@ public class BookStoreProjectApplicationTests {
 
 	@Test
 	public void contextLoads() {
-		
-		
+
 	}
 
 }

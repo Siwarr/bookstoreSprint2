@@ -44,12 +44,12 @@ public class BookServiceImpl implements IBookService {
 	}
 	@Override
 	public Book updateBook(Book b) {
-		Book existingBook=repository.findById(b.getId()).orElse(null);
+		/*Book existingBook=repository.findById(b.getId()).orElse(null);
 		existingBook.setNom(b.getNom());
 		existingBook.setAuteur(b.getAuteur());
 		existingBook.setAvail(b.isAvail());
 		existingBook.setDescription(b.getDescription());
-		existingBook.setPrice(b.getPrice());
-		return repository.save(existingBook);
+		existingBook.setPrice(b.getPrice());*/
+		return repository.save(b);
 	}
 }

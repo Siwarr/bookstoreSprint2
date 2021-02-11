@@ -14,12 +14,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.demo.entities.Book;
 import tn.esprit.demo.service.BookServiceImpl;
+import tn.esprit.demo.service.IBookService;
 
 @RestController
 public class BookController {
 
 	@Autowired
-	private BookServiceImpl service;
+	private IBookService service;
 	//http://localhost:8090/addBook
 	@PostMapping("/addBook")
 	public Book addBook(@RequestBody Book b) {

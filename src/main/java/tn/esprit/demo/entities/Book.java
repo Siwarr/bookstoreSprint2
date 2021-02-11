@@ -42,7 +42,20 @@ public class Book implements Serializable {
 	public Book() {
 		super();
 	}
+	
+	
     
+	public Book(String nom, String auteur, String description, float price, boolean isAvail) {
+		super();
+		this.nom = nom;
+		this.auteur = auteur;
+		this.description = description;
+		this.price = price;
+		this.isAvail = isAvail;
+	}
+
+
+
 	public Long getId() {
 		return id;
 	}
@@ -103,7 +116,7 @@ public class Book implements Serializable {
 	@Override
 	public String toString() {
 		return "Book [id=" + id + ", nom=" + nom + ", auteur=" + auteur + ", description=" + description + ", price="
-				+ price + ", isAvail=" + isAvail + ", emprunts=" + emprunts + "]";
+				+ price + ", isAvail=" + isAvail + "]";
 	}
 
 
