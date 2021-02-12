@@ -16,7 +16,6 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
 	</properties>
 
 	<dependencies>
@@ -50,14 +49,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
-		<!-- https://mvnrepository.com/artifact/com.stripe/stripe-java -->
-		<dependency>
-    		<groupId>com.stripe</groupId>
-    		<artifactId>stripe-java</artifactId>
-    		<version>20.34.0</version>
-		</dependency>
-		
 	</dependencies>
 
 	<build>
