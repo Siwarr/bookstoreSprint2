@@ -21,7 +21,7 @@ import tn.esprit.demo.service.CommandeServiceImpl;
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/Commande")
-//**
+//*
 public class CommandeController {
 
 	@Autowired
